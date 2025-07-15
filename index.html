@@ -32,14 +32,78 @@
             position: relative;
         }
 
-        .container {
-            width: 90%;
-            max-width: 1400px;
-            margin: 0 auto;
+        /* ====== LOADING ANIMATION ====== */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--deep-blue);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 1s ease-out;
+            overflow: hidden;
         }
 
-        section {
-            padding: 100px 0;
+        .loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .swimmer {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 20L30 50L50 80L70 50Z" fill="%2300c8ff"/><circle cx="50" cy="30" r="10" fill="white"/></svg>') no-repeat center center/contain;
+            animation: swim 4s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes swim {
+            0% {
+                transform: translateX(-100px) translateY(50px) rotate(0deg);
+            }
+            100% {
+                transform: translateX(calc(100vw + 100px)) translateY(-50px) rotate(360deg);
+            }
+        }
+
+        .water-drops {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="3" fill="%2300c8ff"/><circle cx="50" cy="40" r="2" fill="%2300c8ff"/><circle cx="80" cy="30" r="4" fill="%2300c8ff"/><circle cx="30" cy="70" r="3" fill="%2300c8ff"/><circle cx="70" cy="60" r="2" fill="%2300c8ff"/></svg>') repeat;
+            animation: waterFlow 20s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes waterFlow {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 1000px 1000px;
+            }
+        }
+
+        .loading-text {
+            color: white;
+            font-size: 2rem;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 2s ease-out 1s forwards;
+            text-shadow: 0 0 10px rgba(0, 200, 255, 0.7);
+            z-index: 1;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
         }
 
         /* ====== ANIMATIONS ====== */
@@ -58,6 +122,26 @@
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
+        }
+
+        @keyframes waterEffect {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes bubbleRise {
+            0% {
+                transform: translateY(0) scale(0.5);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100px) scale(1.2);
+                opacity: 0;
+            }
         }
 
         .animate-on-scroll {
@@ -179,7 +263,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('1.jpg') no-repeat center center/cover;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M0 100 L0 0 Q50 30 100 0 L100 100 Z" fill="%23003366"/></svg>') no-repeat center center/cover;
             z-index: -2;
         }
 
@@ -253,7 +337,64 @@
             background: rgba(255, 255, 255, 0.1);
         }
 
-        /* ====== BOOKING MODAL ====== */
+        /* ====== BOOK A DIVE BUTTON ANIMATION ====== */
+        .book-dive-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s;
+        }
+
+        .book-dive-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0.3),
+                rgba(255, 255, 255, 0),
+                rgba(255, 255, 255, 0.3)
+            );
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+            z-index: -1;
+        }
+
+        @keyframes shine {
+            0% {
+                left: -100%;
+                top: -100%;
+            }
+            100% {
+                left: 100%;
+                top: 100%;
+            }
+        }
+
+        .book-dive-btn:hover::before {
+            animation: shine 1s infinite;
+        }
+
+        .book-dive-btn .bubbles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .book-dive-btn .bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: bubbleRise 1s ease-out forwards;
+        }
+
+        /* ====== PREMIUM BOOKING MODAL ====== */
         .modal {
             display: none;
             position: fixed;
@@ -278,6 +419,27 @@
             transform: scale(0.9);
             opacity: 0;
             transition: all 0.3s ease-out;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e6f7ff 100%);
+            border: 1px solid rgba(0, 200, 255, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .modal-content::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(0, 200, 255, 0.1),
+                rgba(0, 200, 255, 0),
+                rgba(0, 200, 255, 0.1)
+            );
+            animation: waterEffect 8s ease infinite;
+            z-index: -1;
         }
 
         .modal.active .modal-content {
@@ -293,6 +455,9 @@
             cursor: pointer;
             color: #777;
             transition: all 0.3s;
+            background: none;
+            border: none;
+            z-index: 2;
         }
 
         .close-modal:hover {
@@ -301,7 +466,9 @@
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
         }
 
         .form-group label {
@@ -320,6 +487,7 @@
             border-radius: 5px;
             font-family: inherit;
             transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.8);
         }
 
         .form-group input:focus,
@@ -328,6 +496,7 @@
             border-color: var(--ocean-teal);
             box-shadow: 0 0 0 3px rgba(0, 200, 255, 0.2);
             outline: none;
+            background: white;
         }
 
         .submit-btn {
@@ -340,32 +509,106 @@
             font-weight: bold;
             transition: all 0.3s;
             width: 100%;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: all 0.5s;
+            z-index: -1;
         }
 
         .submit-btn:hover {
             background: var(--deep-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
         }
 
         /* ====== TEAM VIDEO ====== */
-        .team-video {
+        .team-video-container {
             width: 100%;
+            max-width: 1000px;
+            margin: 40px auto;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            margin-top: 30px;
-            transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
-            transition: all 0.5s ease-out;
-        }
-
-        .team-video:hover {
-            transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1.02);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
         }
 
-        .team-video video {
+        .video-wrapper {
+            position: relative;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        }
+
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            display: block;
+            height: 100%;
+            object-fit: cover;
             transition: all 0.5s;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 51, 102, 0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            opacity: 1;
+            transition: all 0.3s;
+        }
+
+        .video-overlay h3 {
+            font-size: 2.5rem;
+            margin-top: 20px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .play-btn {
+            background: var(--ocean-teal);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+            background: var(--coral);
+        }
+
+        /* Pause state when video is playing */
+        .video-wrapper.playing .video-overlay {
+            opacity: 0;
+            pointer-events: none;
         }
 
         /* ====== SERVICES SECTION ====== */
@@ -830,6 +1073,15 @@
     </style>
 </head>
 <body>
+    <!-- ====== LOADING SCREEN WITH SWIMMER ANIMATION ====== -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="water-drops"></div>
+        <div class="swimmer" style="top: 30%; left: -100px;"></div>
+        <div class="swimmer" style="top: 60%; left: -150px; animation-delay: 1s;"></div>
+        <div class="swimmer" style="top: 20%; left: -200px; animation-delay: 2s;"></div>
+        <div class="loading-text" data-en="Welcome to Deep Marine Diving" data-sw="Karibu kwenye Deep Marine Diving">Welcome to Deep Marine Diving</div>
+    </div>
+
     <!-- ====== LANGUAGE SWITCHER ====== -->
     <div class="language-switcher">
         <button class="language-btn active" id="enBtn">EN</button>
@@ -841,7 +1093,7 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                    <img src="logo.jpg" alt="Deep Marine Diving">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 50'><text x='50' y='30' font-family='Montserrat' font-size='20' fill='%23003366' text-anchor='middle'>Deep Marine</text></svg>" alt="Deep Marine Diving">
                 </div>
                 <div class="nav-links">
                     <a href="#home" data-en="Home" data-sw="Nyumbani">Home</a>
@@ -863,13 +1115,16 @@
                 <p data-en="PADI 5★ Dive Center offering world-class scuba training and unforgettable diving experiences in Dar es Salaam." data-sw="Kituo cha PADI 5★ kinachotoa mafunzo ya scuba na uzoefu wa kupiga mbizi usahaulikayo Dar es Salaam.">PADI 5★ Dive Center offering world-class scuba training and unforgettable diving experiences in Dar es Salaam.</p>
                 <div>
                     <a href="#services" class="btn btn-primary" data-en="Explore Courses" data-sw="Angalia Kozi">Explore Courses</a>
-                    <a href="#" class="btn btn-outline" id="bookNowBtn" data-en="Book a Dive" data-sw="Hifadhi Dive">Book a Dive</a>
+                    <a href="#" class="btn btn-outline book-dive-btn" id="bookNowBtn" data-en="BOOK A DIVE" data-sw="HIFADHI DIVE">
+                        <span>BOOK A DIVE</span>
+                        <div class="bubbles"></div>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ====== BOOKING MODAL ====== -->
+    <!-- ====== PREMIUM BOOKING MODAL ====== -->
     <div class="modal" id="bookingModal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
@@ -951,8 +1206,19 @@
                 <p data-en="Meet our certified PADI instructors with years of experience" data-sw="Kutana na waalimu wetu wa PADI wenye uzoefu wa miaka">Meet our certified PADI instructors with years of experience</p>
             </div>
             
-            <div class="team-video animate-on-scroll">
-                <video src="video.mp4" autoplay loop muted playsinline></video>
+            <div class="team-video-container animate-on-scroll">
+                <div class="video-wrapper">
+                    <video autoplay loop muted playsinline>
+                        <source src="video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-overlay">
+                        <button class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <h3 data-en="Meet Our Dive Team" data-sw="Kutana na Timu Yetu ya Uvuvi">Meet Our Dive Team</h3>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -967,19 +1233,19 @@
             
             <div class="gallery-grid">
                 <div class="gallery-item animate-on-scroll">
-                    <img src="2.jpg" alt="Diving in Tanzania">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><rect width='300' height='300' fill='%2300c8ff'/><text x='150' y='150' font-family='Montserrat' font-size='20' fill='white' text-anchor='middle'>Coral Reef Image</text></svg>" alt="Diving in Tanzania">
                     <div class="gallery-caption" data-en="Coral Reef Exploration" data-sw="Uchunguzi wa Matumbawe">Coral Reef Exploration</div>
                 </div>
                 <div class="gallery-item animate-on-scroll" style="transition-delay: 0.1s;">
-                    <img src="3.jpg" alt="Marine Life">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><rect width='300' height='300' fill='%23003366'/><text x='150' y='150' font-family='Montserrat' font-size='20' fill='white' text-anchor='middle'>Marine Life Image</text></svg>" alt="Marine Life">
                     <div class="gallery-caption" data-en="Colorful Marine Life" data-sw="Maisha ya Baharini Yenye Rangi">Colorful Marine Life</div>
                 </div>
                 <div class="gallery-item animate-on-scroll" style="transition-delay: 0.2s;">
-                    <img src="4.jpg" alt="Diving Training">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><rect width='300' height='300' fill='%2300c8ff'/><text x='150' y='150' font-family='Montserrat' font-size='20' fill='white' text-anchor='middle'>Training Image</text></svg>" alt="Diving Training">
                     <div class="gallery-caption" data-en="Diving Training Session" data-sw="Mafunzo ya Kupiga Mbizi">Diving Training Session</div>
                 </div>
                 <div class="gallery-item animate-on-scroll" style="transition-delay: 0.3s;">
-                    <img src="5.jpg" alt="Underwater Photography">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><rect width='300' height='300' fill='%23003366'/><text x='150' y='150' font-family='Montserrat' font-size='20' fill='white' text-anchor='middle'>Underwater Photo</text></svg>" alt="Underwater Photography">
                     <div class="gallery-caption" data-en="Underwater Photography" data-sw="Upigaji Picha Chini ya Maji">Underwater Photography</div>
                 </div>
             </div>
@@ -999,7 +1265,7 @@
                         <div class="testimonial-text" data-en="&quot;The most professional diving center I've experienced in East Africa! The instructors made me feel completely safe throughout my Advanced Open Water course.&quot;" data-sw="&quot;Kituo cha kitaalamu zaidi cha kupiga mbizi nimekiona Afrika Mashariki! Waalimu walinifanya nihisi salama kabisa wakati wote wa kozi yangu ya Advanced Open Water.&quot;">"The most professional diving center I've experienced in East Africa! The instructors made me feel completely safe throughout my Advanced Open Water course."</div>
                         <div class="testimonial-author">
                             <div class="author-img">
-                                <img src="client1.jpg" alt="Sarah K.">
+                                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%2300c8ff'/><text x='50' y='55' font-family='Montserrat' font-size='30' fill='white' text-anchor='middle' dominant-baseline='middle'>S</text></svg>" alt="Sarah K.">
                             </div>
                             <div class="author-info">
                                 <h4>Sarah K.</h4>
@@ -1020,7 +1286,7 @@
                         <div class="testimonial-text" data-en="&quot;Incredible coral reefs! The team at Deep Marine knows all the secret spots around Dar es Salaam. My night dive was unforgettable!&quot;" data-sw="&quot;Matumbawe ya kushangaza! Timu ya Deep Marine wanajua maeneo yote ya siri karibu na Dar es Salaam. Dive yangu ya usiku haitowezesahau!&quot;">"Incredible coral reefs! The team at Deep Marine knows all the secret spots around Dar es Salaam. My night dive was unforgettable!"</div>
                         <div class="testimonial-author">
                             <div class="author-img">
-                                <img src="client2.jpg" alt="James T.">
+                                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23003366'/><text x='50' y='55' font-family='Montserrat' font-size='30' fill='white' text-anchor='middle' dominant-baseline='middle'>J</text></svg>" alt="James T.">
                             </div>
                             <div class="author-info">
                                 <h4>James T.</h4>
@@ -1041,7 +1307,7 @@
                         <div class="testimonial-text" data-en="&quot;Completed my Open Water certification with Deep Marine. The instructors were patient, knowledgeable, and made learning fun!&quot;" data-sw="&quot;Nilimaliza vyeti vyangu vya Open Water na Deep Marine. Waalimu walikuwa na subira, wenye ujuzi, na walifanya kujifunza kuwa raha!&quot;">"Completed my Open Water certification with Deep Marine. The instructors were patient, knowledgeable, and made learning fun!"</div>
                         <div class="testimonial-author">
                             <div class="author-img">
-                                <img src="client3.jpg" alt="Amina S.">
+                                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%2300c8ff'/><text x='50' y='55' font-family='Montserrat' font-size='30' fill='white' text-anchor='middle' dominant-baseline='middle'>A</text></svg>" alt="Amina S.">
                             </div>
                             <div class="author-info">
                                 <h4>Amina S.</h4>
@@ -1185,6 +1451,13 @@
     </div>
 
     <script>
+        // ====== LOADING ANIMATION ======
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 4000); // 4 seconds loading animation
+        });
+
         // ====== LANGUAGE SWITCHER FUNCTIONALITY ======
         const enBtn = document.getElementById('enBtn');
         const swBtn = document.getElementById('swBtn');
@@ -1230,21 +1503,56 @@
         enBtn.addEventListener('click', () => switchLanguage('en'));
         swBtn.addEventListener('click', () => switchLanguage('sw'));
 
-        // ====== BOOKING MODAL FUNCTIONALITY ======
+        // ====== BOOK A DIVE BUTTON ANIMATION ======
         const bookNowBtn = document.getElementById('bookNowBtn');
+        
+        bookNowBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Create bubbles animation
+            for (let i = 0; i < 10; i++) {
+                createBubble(e);
+            }
+            
+            // Open modal after short delay
+            setTimeout(() => {
+                const bookingModal = document.getElementById('bookingModal');
+                bookingModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                setTimeout(() => {
+                    bookingModal.classList.add('active');
+                }, 10);
+            }, 500);
+        });
+        
+        function createBubble(e) {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            
+            // Position bubble near click point
+            const rect = bookNowBtn.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            bubble.style.left = x + 'px';
+            bubble.style.top = y + 'px';
+            bubble.style.width = (Math.random() * 20 + 5) + 'px';
+            bubble.style.height = bubble.style.width;
+            
+            // Add bubble to button
+            const bubblesContainer = bookNowBtn.querySelector('.bubbles');
+            bubblesContainer.appendChild(bubble);
+            
+            // Remove bubble after animation
+            setTimeout(() => {
+                bubble.remove();
+            }, 1000);
+        }
+
+        // ====== BOOKING MODAL FUNCTIONALITY ======
         const bookingModal = document.getElementById('bookingModal');
         const closeModal = document.querySelector('.close-modal');
         const bookingForm = document.getElementById('bookingForm');
-
-        // Open modal
-        bookNowBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            bookingModal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-            setTimeout(() => {
-                bookingModal.classList.add('active');
-            }, 10);
-        });
 
         // Close modal
         closeModal.addEventListener('click', () => {
@@ -1316,16 +1624,27 @@
                 : 'Asante! Ombi lako la kuhifadhi limepelekwa. Tutawasiliana nawe hivi karibuni.');
         });
 
-        // ====== AUTO-PLAY VIDEO ======
-        document.addEventListener('DOMContentLoaded', () => {
-            const video = document.querySelector('video');
-            if (video) {
-                video.play().catch(e => {
-                    // Fallback for browsers that block autoplay
-                    video.muted = true;
-                    video.play();
-                });
+        // ====== VIDEO CONTROL FUNCTIONALITY ======
+        const videoWrapper = document.querySelector('.video-wrapper');
+        const video = document.querySelector('.video-wrapper video');
+        const playBtn = document.querySelector('.play-btn');
+
+        playBtn.addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+                videoWrapper.classList.add('playing');
+            } else {
+                video.pause();
+                videoWrapper.classList.remove('playing');
             }
+        });
+
+        // Auto-play video on load (with mute fallback)
+        document.addEventListener('DOMContentLoaded', () => {
+            video.play().catch(e => {
+                video.muted = true;
+                video.play();
+            });
         });
 
         // ====== SCROLL ANIMATIONS ======
@@ -1354,6 +1673,24 @@
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
+            }
+        });
+
+        // ====== WATER DROPS BACKGROUND ANIMATION ======
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create dynamic water drops for background
+            const body = document.body;
+            for (let i = 0; i < 30; i++) {
+                const drop = document.createElement('div');
+                drop.className = 'water-drop';
+                drop.style.left = Math.random() * 100 + 'vw';
+                drop.style.top = Math.random() * 100 + 'vh';
+                drop.style.width = (Math.random() * 20 + 5) + 'px';
+                drop.style.height = drop.style.width;
+                drop.style.animationDelay = (Math.random() * 5) + 's';
+                drop.style.opacity = Math.random() * 0.5 + 0.1;
+                drop.style.animation = 'bubbleRise ' + (Math.random() * 5 + 5) + 's linear infinite';
+                body.appendChild(drop);
             }
         });
     </script>
