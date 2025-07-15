@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Marine Diving | PADI 5★ Center | Tanzania</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ====== CUSTOM VARIABLES ====== */
+        :root {
+            --deep-blue: #003366;
+            --ocean-teal: #00c8ff;
+            --coral: #ff6b6b;
+            --light-wave: #e6f7ff;
+            --dark-abyss: #001a33;
+            --neon-glow: 0 0 15px rgba(0, 200, 255, 0.7);
+        }
+
+        /* ====== BASE STYLES ====== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background: var(--light-wave);
+            color: var(--dark-abyss);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        /* ====== ANIMATIONS ====== */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes colorChange {
+            0% { color: var(--ocean-teal); }
+            50% { color: var(--coral); }
+            100% { color: var(--ocean-teal); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transition: all 0.6s ease-out;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* ====== LANGUAGE SWITCHER ====== */
+        .language-switcher {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 15px;
+            border-radius: 50px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .language-btn {
+            background: none;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .language-btn.active {
+            background: var(--ocean-teal);
+            color: white;
+        }
+
+        /* ====== HEADER ====== */
+        header {
+            position: fixed;
+            width: 100%;
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        header.scrolled {
+            padding: 15px 0;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            transition: all 0.3s;
+        }
+
+        header.scrolled .logo img {
+            height: 45px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--deep-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--ocean-teal);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ====== HERO SECTION ====== */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('1.jpg') no-repeat center center/cover;
+            z-index: -2;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 51, 102, 0.7);
+            z-index: -1;
+        }
+
+        .hero-content {
+            color: white;
+            max-width: 800px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ====== BUTTON STYLES ====== */
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background: var(--ocean-teal);
+            color: white;
+            border: 2px solid var(--ocean-teal);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: var(--deep-blue);
+            border-color: var(--deep-blue);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* ====== BOOKING MODAL ====== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            transform: scale(0.9);
+            opacity: 0;
+            transition: all 0.3s ease-out;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #777;
+            transition: all 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--coral);
+            transform: rotate(90deg);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--deep-blue);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--ocean-teal);
+            box-shadow: 0 0 0 3px rgba(0, 200, 255, 0.2);
+            outline: none;
+        }
+
+        .submit-btn {
+            background: var(--ocean-teal);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: var(--deep-blue);
+        }
+
+        /* ====== TEAM VIDEO ====== */
+        .team-video {
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+            transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+            transition: all 0.5s ease-out;
+        }
+
+        .team-video:hover {
+            transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .team-video video {
+            width: 100%;
+            display: block;
+            transition: all 0.5s;
+        }
+
+        /* ====== SERVICES SECTION ====== */
+        .services {
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--deep-blue);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--ocean-teal);
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--light-wave);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 200, 255, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-color: rgba(0, 200, 255, 0.3);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--ocean-teal);
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .service-card h3 {
+            color: var(--deep-blue);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        /* ====== TESTIMONIALS SECTION ====== */
+        .testimonials {
+            background: var(--light-wave);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(0, 200, 255, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .testimonial-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            border: 3px solid var(--ocean-teal);
+        }
+
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            color: var(--deep-blue);
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .stars {
+            color: gold;
+            margin-top: 5px;
+        }
+
+        /* ====== GALLERY SECTION ====== */
+        .gallery {
+            background: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            aspect-ratio: 1/1;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
+        }
+
+        /* ====== CONTACT SECTION ====== */
+        .contact {
+            background: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            color: var(--deep-blue);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .contact-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--ocean-teal);
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--ocean-teal);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover .contact-icon {
+            background: var(--deep-blue);
+            transform: rotate(15deg);
+        }
+
+        .contact-text {
+            color: #555;
+        }
+
+        .contact-text a {
+            color: #555;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-text a:hover {
+            color: var(--ocean-teal);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--ocean-teal);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--deep-blue);
+            transform: translateY(-3px);
+        }
+
+        /* ====== FOOTER ====== */
+        footer {
+            background: var(--deep-blue);
+            color: white;
+            padding: 50px 0 20px;
+            position: relative;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--ocean-teal);
+        }
+
+        .footer-col p {
+            color: #ccc;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .footer-links a {
+            display: block;
+            color: #ccc;
+            margin-bottom: 10px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--ocean-teal);
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: var(--ocean-teal);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* ====== DEVELOPER CREDIT ====== */
+        .developer-credit {
+            background: var(--dark-abyss);
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 0.9rem;
+        }
+
+        .developer-text {
+            position: relative;
+            display: inline-block;
+        }
+
+        .mato-media {
+            font-weight: bold;
+            color: var(--ocean-teal);
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .developer-credit:hover .mato-media {
+            animation: colorChange 2s infinite;
+        }
+
+        /* ====== RESPONSIVE DESIGN ====== */
+        @media (max-width: 992px) {
+            section {
+                padding: 80px 0;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 70px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 15px;
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .modal-content {
+                padding: 30px 20px;
+            }
+
+            .language-switcher {
+                top: 70px;
+                right: 10px;
+                padding: 8px 12px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ====== LANGUAGE SWITCHER ====== -->
+    <div class="language-switcher">
+        <button class="language-btn active" id="enBtn">EN</button>
+        <button class="language-btn" id="swBtn">SW</button>
+    </div>
+
+    <!-- ====== HEADER ====== -->
+    <header id="main-header">
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="logo.jpg" alt="Deep Marine Diving">
+                </div>
+                <div class="nav-links">
+                    <a href="#home" data-en="Home" data-sw="Nyumbani">Home</a>
+                    <a href="#services" data-en="Services" data-sw="Huduma">Services</a>
+                    <a href="#about" data-en="About" data-sw="Kuhusu">About</a>
+                    <a href="#gallery" data-en="Gallery" data-sw="Picha">Gallery</a>
+                    <a href="#testimonials" data-en="Testimonials" data-sw="Ukaguzi">Testimonials</a>
+                    <a href="#contact" data-en="Contact" data-sw="Mawasiliano">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ====== HERO SECTION ====== -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content animate-on-scroll">
+                <h1 data-en="Discover Tanzania's Underwater Wonders" data-sw="Gundua Ajabu ya Chini ya Bahari ya Tanzania">Discover Tanzania's Underwater Wonders</h1>
+                <p data-en="PADI 5★ Dive Center offering world-class scuba training and unforgettable diving experiences in Dar es Salaam." data-sw="Kituo cha PADI 5★ kinachotoa mafunzo ya scuba na uzoefu wa kupiga mbizi usahaulikayo Dar es Salaam.">PADI 5★ Dive Center offering world-class scuba training and unforgettable diving experiences in Dar es Salaam.</p>
+                <div>
+                    <a href="#services" class="btn btn-primary" data-en="Explore Courses" data-sw="Angalia Kozi">Explore Courses</a>
+                    <a href="#" class="btn btn-outline" id="bookNowBtn" data-en="Book a Dive" data-sw="Hifadhi Dive">Book a Dive</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== BOOKING MODAL ====== -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 style="color: var(--deep-blue); margin-bottom: 20px;" data-en="Book Your Diving Experience" data-sw="Hifadhi Uzoefu Wako wa Kupiga Mbizi">Book Your Diving Experience</h2>
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label for="name" data-en="Full Name" data-sw="Jina Kamili">Full Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone" data-en="Phone Number" data-sw="Namba ya Simu">Phone Number</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="location" data-en="Location (City/District)" data-sw="Mahali (Mji/Wilaya)">Location (City/District)</label>
+                    <input type="text" id="location" required>
+                </div>
+                <div class="form-group">
+                    <label for="service" data-en="Service Interested In" data-sw="Huduma Unayopenda">Service Interested In</label>
+                    <select id="service" required>
+                        <option value="" data-en="Select Service" data-sw="Chagua Huduma">Select Service</option>
+                        <option value="Bubble Maker" data-en="Bubble Maker (8-10 yrs)" data-sw="Bubble Maker (8-10 yrs)">Bubble Maker (8-10 yrs)</option>
+                        <option value="Open Water" data-en="Open Water Diver" data-sw="Open Water Diver">Open Water Diver</option>
+                        <option value="Advanced" data-en="Advanced Diver" data-sw="Advanced Diver">Advanced Diver</option>
+                        <option value="Fun Dive" data-en="Fun Dive" data-sw="Piga Mbizi kwa Furaha">Fun Dive</option>
+                        <option value="Equipment" data-en="Equipment Rental" data-sw="Kukodisha Vifaa">Equipment Rental</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message" data-en="Additional Notes" data-sw="Maelezo ya Ziada">Additional Notes</label>
+                    <textarea id="message" rows="4"></textarea>
+                </div>
+                <button type="submit" class="submit-btn" data-en="Submit Booking" data-sw="Tuma Uhifadhi">Submit Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ====== SERVICES SECTION ====== -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2 data-en="Our Diving Services" data-sw="Huduma Zetu za Kupiga Mbizi">Our Diving Services</h2>
+                <p data-en="Professional training and unforgettable underwater adventures" data-sw="Mafunzo ya kitaalam na safari za kusisimua chini ya bahari">Professional training and unforgettable underwater adventures</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-certificate pulse"></i>
+                    </div>
+                    <h3 data-en="PADI Certification" data-sw="Vyeti vya PADI">PADI Certification</h3>
+                    <p data-en="From beginner Bubble Maker courses to professional Divemaster training with international certification." data-sw="Kuanzia kozi za Bubble Maker hadi mafunzo ya Divemaster yenye vyeti vya kimataifa.">From beginner Bubble Maker courses to professional Divemaster training with international certification.</p>
+                    <a href="#" class="btn btn-primary" data-en="Learn More" data-sw="Jifunze Zaidi">Learn More</a>
+                </div>
+                <div class="service-card animate-on-scroll" style="transition-delay: 0.2s;">
+                    <div class="service-icon">
+                        <i class="fas fa-ship pulse"></i>
+                    </div>
+                    <h3 data-en="Dive Trips" data-sw="Safari za Kupiga Mbizi">Dive Trips</h3>
+                    <p data-en="Explore Tanzania's best dive sites including Mafia Island, Zanzibar, and Pemba with our expert guides." data-sw="Gundua maeneo bora ya kupiga mbizi Tanzania ikiwa ni pamoja na Mafia, Zanzibar na Pemba kwa uongozi wa wataalamu wetu.">Explore Tanzania's best dive sites including Mafia Island, Zanzibar, and Pemba with our expert guides.</p>
+                    <a href="#" class="btn btn-primary" data-en="View Packages" data-sw="Angalia Mifuko">View Packages</a>
+                </div>
+                <div class="service-card animate-on-scroll" style="transition-delay: 0.4s;">
+                    <div class="service-icon">
+                        <i class="fas fa-tools pulse"></i>
+                    </div>
+                    <h3 data-en="Equipment Rental" data-sw="Kukodisha Vifaa">Equipment Rental</h3>
+                    <p data-en="High-quality scuba gear from leading brands available for rent at competitive prices." data-sw="Vifaa vya hali ya juu vya scuba kutoka kwa wabunifu wakuu vinapatikana kwa kodi kwa bei nafuu.">High-quality scuba gear from leading brands available for rent at competitive prices.</p>
+                    <a href="#" class="btn btn-primary" data-en="Rent Now" data-sw="Kodi Sasa">Rent Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== ABOUT SECTION ====== -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2 data-en="Our Professional Team" data-sw="Timu Yetu ya Wataalamu">Our Professional Team</h2>
+                <p data-en="Meet our certified PADI instructors with years of experience" data-sw="Kutana na waalimu wetu wa PADI wenye uzoefu wa miaka">Meet our certified PADI instructors with years of experience</p>
+            </div>
+            
+            <div class="team-video animate-on-scroll">
+                <video src="video.mp4" autoplay loop muted playsinline></video>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== GALLERY SECTION ====== -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2 data-en="Our Diving Gallery" data-sw="Picha za Kupiga Mbizi">Our Diving Gallery</h2>
+                <p data-en="Explore the underwater beauty of Tanzania through our lens" data-sw="Tazama uzuri wa chini ya bahari ya Tanzania kupitia lenzi yetu">Explore the underwater beauty of Tanzania through our lens</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item animate-on-scroll">
+                    <img src="2.jpg" alt="Diving in Tanzania">
+                    <div class="gallery-caption" data-en="Coral Reef Exploration" data-sw="Uchunguzi wa Matumbawe">Coral Reef Exploration</div>
+                </div>
+                <div class="gallery-item animate-on-scroll" style="transition-delay: 0.1s;">
+                    <img src="3.jpg" alt="Marine Life">
+                    <div class="gallery-caption" data-en="Colorful Marine Life" data-sw="Maisha ya Baharini Yenye Rangi">Colorful Marine Life</div>
+                </div>
+                <div class="gallery-item animate-on-scroll" style="transition-delay: 0.2s;">
+                    <img src="4.jpg" alt="Diving Training">
+                    <div class="gallery-caption" data-en="Diving Training Session" data-sw="Mafunzo ya Kupiga Mbizi">Diving Training Session</div>
+                </div>
+                <div class="gallery-item animate-on-scroll" style="transition-delay: 0.3s;">
+                    <img src="5.jpg" alt="Underwater Photography">
+                    <div class="gallery-caption" data-en="Underwater Photography" data-sw="Upigaji Picha Chini ya Maji">Underwater Photography</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== TESTIMONIALS SECTION ====== -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2 data-en="What Our Divers Say" data-sw="Wapiga Mbizi Wetu Wasemaje">What Our Divers Say</h2>
+                <p data-en="Rated 5★ by hundreds of satisfied customers" data-sw="Imepewa tathmini ya nyota 5 na mamia ya wateja walioridhika">Rated 5★ by hundreds of satisfied customers</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-content">
+                        <div class="testimonial-text" data-en="&quot;The most professional diving center I've experienced in East Africa! The instructors made me feel completely safe throughout my Advanced Open Water course.&quot;" data-sw="&quot;Kituo cha kitaalamu zaidi cha kupiga mbizi nimekiona Afrika Mashariki! Waalimu walinifanya nihisi salama kabisa wakati wote wa kozi yangu ya Advanced Open Water.&quot;">"The most professional diving center I've experienced in East Africa! The instructors made me feel completely safe throughout my Advanced Open Water course."</div>
+                        <div class="testimonial-author">
+                            <div class="author-img">
+                                <img src="client1.jpg" alt="Sarah K.">
+                            </div>
+                            <div class="author-info">
+                                <h4>Sarah K.</h4>
+                                <p data-en="Advanced Open Water Diver" data-sw="Advanced Open Water Diver">Advanced Open Water Diver</p>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card animate-on-scroll" style="transition-delay: 0.2s;">
+                    <div class="testimonial-content">
+                        <div class="testimonial-text" data-en="&quot;Incredible coral reefs! The team at Deep Marine knows all the secret spots around Dar es Salaam. My night dive was unforgettable!&quot;" data-sw="&quot;Matumbawe ya kushangaza! Timu ya Deep Marine wanajua maeneo yote ya siri karibu na Dar es Salaam. Dive yangu ya usiku haitowezesahau!&quot;">"Incredible coral reefs! The team at Deep Marine knows all the secret spots around Dar es Salaam. My night dive was unforgettable!"</div>
+                        <div class="testimonial-author">
+                            <div class="author-img">
+                                <img src="client2.jpg" alt="James T.">
+                            </div>
+                            <div class="author-info">
+                                <h4>James T.</h4>
+                                <p data-en="Open Water Certified" data-sw="Open Water Certified">Open Water Certified</p>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card animate-on-scroll" style="transition-delay: 0.4s;">
+                    <div class="testimonial-content">
+                        <div class="testimonial-text" data-en="&quot;Completed my Open Water certification with Deep Marine. The instructors were patient, knowledgeable, and made learning fun!&quot;" data-sw="&quot;Nilimaliza vyeti vyangu vya Open Water na Deep Marine. Waalimu walikuwa na subira, wenye ujuzi, na walifanya kujifunza kuwa raha!&quot;">"Completed my Open Water certification with Deep Marine. The instructors were patient, knowledgeable, and made learning fun!"</div>
+                        <div class="testimonial-author">
+                            <div class="author-img">
+                                <img src="client3.jpg" alt="Amina S.">
+                            </div>
+                            <div class="author-info">
+                                <h4>Amina S.</h4>
+                                <p data-en="Open Water Diver" data-sw="Open Water Diver">Open Water Diver</p>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== CONTACT SECTION ====== -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2 data-en="Contact Us" data-sw="Wasiliana Nasi">Contact Us</h2>
+                <p data-en="Get in touch to book your diving adventure" data-sw="Wasiliana nasi kuhifadhi safari yako ya kupiga mbizi">Get in touch to book your diving adventure</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info animate-on-scroll">
+                    <h3 data-en="Our Dive Center" data-sw="Kituo Chetu cha Kupiga Mbizi">Our Dive Center</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text" data-en="Slipway Shop No:17C, Yatch Club Road, Msasani, Dar es Salaam, Tanzania" data-sw="Slipway Shop No:17C, Yatch Club Road, Msasani, Dar es Salaam, Tanzania">Slipway Shop No:17C, Yatch Club Road, Msasani, Dar es Salaam, Tanzania</div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <a href="tel:+255761060911">+255 761 060 911</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <a href="mailto:deepmarine@gmail.com">deepmarine@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-text" data-en="Open daily: 8:00 AM - 6:00 PM" data-sw="Wazi kila siku: 8:00 asubuhi - 6:00 jioni">Open daily: 8:00 AM - 6:00 PM</div>
+                        </div>
+                    </div>
+                    <h3 data-en="Follow Us" data-sw="Tufuate">Follow Us</h3>
+                    <div class="social-links">
+                        <a href="https://instagram.com/instructor_eugen" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com/deepmarinediving" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/255761060911" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form animate-on-scroll" style="transition-delay: 0.2s;">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" data-en="Your Name" data-sw="Jina Lako" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" data-en="Your Email" data-sw="Barua Pepe Yako" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Subject" data-en="Subject" data-sw="Mada">
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="5" placeholder="Your Message" data-en="Your Message" data-sw="Ujumbe Wako" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn" data-en="Send Message" data-sw="Tuma Ujumbe">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== FOOTER ====== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col animate-on-scroll">
+                    <h3 data-en="Deep Marine Diving" data-sw="Deep Marine Diving">Deep Marine Diving</h3>
+                    <p data-en="PADI 5 Star Dive Center in Dar es Salaam, Tanzania offering professional scuba training and unforgettable diving experiences." data-sw="Kituo cha PADI 5 Star cha kupiga mbizi huko Dar es Salaam, Tanzania kinachotoa mafunzo ya kitaalam ya scuba na uzoefu wa kupiga mbizi usahaulikayo.">PADI 5 Star Dive Center in Dar es Salaam, Tanzania offering professional scuba training and unforgettable diving experiences.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col animate-on-scroll" style="transition-delay: 0.1s;">
+                    <h3 data-en="Quick Links" data-sw="Viungo vya Haraka">Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="#home" data-en="Home" data-sw="Nyumbani">Home</a>
+                        <a href="#services" data-en="Services" data-sw="Huduma">Services</a>
+                        <a href="#about" data-en="About" data-sw="Kuhusu">About</a>
+                        <a href="#gallery" data-en="Gallery" data-sw="Picha">Gallery</a>
+                        <a href="#testimonials" data-en="Testimonials" data-sw="Ukaguzi">Testimonials</a>
+                        <a href="#contact" data-en="Contact" data-sw="Mawasiliano">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-col animate-on-scroll" style="transition-delay: 0.2s;">
+                    <h3 data-en="Services" data-sw="Huduma">Services</h3>
+                    <div class="footer-links">
+                        <a href="#" data-en="PADI Courses" data-sw="Kozi za PADI">PADI Courses</a>
+                        <a href="#" data-en="Dive Trips" data-sw="Safari za Kupiga Mbizi">Dive Trips</a>
+                        <a href="#" data-en="Equipment Rental" data-sw="Kukodisha Vifaa">Equipment Rental</a>
+                        <a href="#" data-en="Dive Safaris" data-sw="Safari za Kupiga Mbizi">Dive Safaris</a>
+                    </div>
+                </div>
+                <div class="footer-col animate-on-scroll" style="transition-delay: 0.3s;">
+                    <h3 data-en="Contact Info" data-sw="Mawasiliano">Contact Info</h3>
+                    <div class="footer-links">
+                        <a href="tel:+255761060911"><i class="fas fa-phone-alt"></i> +255 761 060 911</a>
+                        <a href="mailto:deepmarine@gmail.com"><i class="fas fa-envelope"></i> deepmarine@gmail.com</a>
+                        <a href="#"><i class="fas fa-map-marker-alt"></i> <span data-en="Slipway, Msasani, Dar es Salaam" data-sw="Slipway, Msasani, Dar es Salaam">Slipway, Msasani, Dar es Salaam</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright animate-on-scroll">
+                <p data-en="&copy; 2023 Deep Marine Diving Center. All rights reserved." data-sw="&copy; 2023 Deep Marine Diving Center. Haki zote zimehifadhiwa.">&copy; 2023 Deep Marine Diving Center. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ====== DEVELOPER CREDIT ====== -->
+    <div class="developer-credit">
+        <div class="container">
+            <p class="developer-text" data-en="Website developed by" data-sw="Tovuti imetengenezwa na">Website developed by <span class="mato-media">MATO MEDIA TZ</span></p>
+        </div>
+    </div>
+
+    <script>
+        // ====== LANGUAGE SWITCHER FUNCTIONALITY ======
+        const enBtn = document.getElementById('enBtn');
+        const swBtn = document.getElementById('swBtn');
+        
+        function switchLanguage(lang) {
+            // Update active button
+            if (lang === 'en') {
+                enBtn.classList.add('active');
+                swBtn.classList.remove('active');
+            } else {
+                enBtn.classList.remove('active');
+                swBtn.classList.add('active');
+            }
+            
+            // Update all elements with data attributes
+            document.querySelectorAll('[data-en], [data-sw]').forEach(element => {
+                if (element.tagName === 'OPTION') {
+                    // Special handling for select options
+                    const option = element;
+                    const select = option.parentElement;
+                    const selectedValue = select.value;
+                    
+                    option.textContent = lang === 'en' ? option.dataset.en : option.dataset.sw;
+                    
+                    // Restore selected value
+                    select.value = selectedValue;
+                } else if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                    // Handle input placeholders
+                    const placeholder = lang === 'en' ? element.dataset.en : element.dataset.sw;
+                    if (placeholder) {
+                        element.placeholder = placeholder;
+                    }
+                } else {
+                    const text = lang === 'en' ? element.dataset.en : element.dataset.sw;
+                    if (text) {
+                        element.textContent = text;
+                    }
+                }
+            });
+        }
+        
+        // Event listeners for language buttons
+        enBtn.addEventListener('click', () => switchLanguage('en'));
+        swBtn.addEventListener('click', () => switchLanguage('sw'));
+
+        // ====== BOOKING MODAL FUNCTIONALITY ======
+        const bookNowBtn = document.getElementById('bookNowBtn');
+        const bookingModal = document.getElementById('bookingModal');
+        const closeModal = document.querySelector('.close-modal');
+        const bookingForm = document.getElementById('bookingForm');
+
+        // Open modal
+        bookNowBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            bookingModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => {
+                bookingModal.classList.add('active');
+            }, 10);
+        });
+
+        // Close modal
+        closeModal.addEventListener('click', () => {
+            bookingModal.classList.remove('active');
+            setTimeout(() => {
+                bookingModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }, 300);
+        });
+
+        // Close when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === bookingModal) {
+                bookingModal.classList.remove('active');
+                setTimeout(() => {
+                    bookingModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }, 300);
+            }
+        });
+
+        // Form submission
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const location = document.getElementById('location').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            
+            // Create WhatsApp message
+            const currentLang = enBtn.classList.contains('active') ? 'en' : 'sw';
+            const serviceText = currentLang === 'en' 
+                ? document.querySelector(`option[value="${service}"]`).dataset.en
+                : document.querySelector(`option[value="${service}"]`).dataset.sw;
+            
+            const whatsappMessage = currentLang === 'en'
+                ? `*NEW DIVING BOOKING*%0A%0A` +
+                  `*Name:* ${name}%0A` +
+                  `*Phone:* ${phone}%0A` +
+                  `*Location:* ${location}%0A` +
+                  `*Service:* ${serviceText}%0A` +
+                  `*Notes:* ${message || 'None'}`
+                : `*UHIFADHI MPYA WA KUPIGA MBZI*%0A%0A` +
+                  `*Jina:* ${name}%0A` +
+                  `*Simu:* ${phone}%0A` +
+                  `*Mahali:* ${location}%0A` +
+                  `*Huduma:* ${serviceText}%0A` +
+                  `*Maelezo:* ${message || 'Hakuna'}`;
+            
+            // Send to WhatsApp
+            window.open(`https://wa.me/255761060911?text=${whatsappMessage}`, '_blank');
+            
+            // Reset form
+            bookingForm.reset();
+            
+            // Close modal
+            bookingModal.classList.remove('active');
+            setTimeout(() => {
+                bookingModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }, 300);
+            
+            // Show confirmation in current language
+            alert(currentLang === 'en' 
+                ? 'Thank you! Your booking request has been sent. We will contact you shortly.'
+                : 'Asante! Ombi lako la kuhifadhi limepelekwa. Tutawasiliana nawe hivi karibuni.');
+        });
+
+        // ====== AUTO-PLAY VIDEO ======
+        document.addEventListener('DOMContentLoaded', () => {
+            const video = document.querySelector('video');
+            if (video) {
+                video.play().catch(e => {
+                    // Fallback for browsers that block autoplay
+                    video.muted = true;
+                    video.play();
+                });
+            }
+        });
+
+        // ====== SCROLL ANIMATIONS ======
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition < windowHeight - 100) {
+                    element.classList.add('animated');
+                }
+            });
+        }
+
+        // Initial check
+        animateOnScroll();
+
+        // Check on scroll
+        window.addEventListener('scroll', animateOnScroll);
+
+        // ====== HEADER SCROLL EFFECT ======
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
