@@ -1010,10 +1010,12 @@
             color: var(--ocean-teal);
             display: inline-block;
             transition: all 0.3s;
+            animation: colorChange 5s infinite;
+            cursor: pointer;
         }
 
-        .developer-credit:hover .mato-media {
-            animation: colorChange 2s infinite;
+        .mato-media:hover {
+            text-decoration: underline;
         }
 
         /* ====== RESPONSIVE DESIGN ====== */
@@ -1097,10 +1099,8 @@
                 </div>
                 <div class="nav-links">
                     <a href="#home" data-en="Home" data-sw="Nyumbani">Home</a>
-                    <a href="#services" data-en="Services" data-sw="Huduma">Services</a>
                     <a href="#about" data-en="About" data-sw="Kuhusu">About</a>
-                    <a href="#gallery" data-en="Gallery" data-sw="Picha">Gallery</a>
-                    <a href="#testimonials" data-en="Testimonials" data-sw="Ukaguzi">Testimonials</a>
+                    <a href="#services" data-en="Activities" data-sw="Shughuli">Activities</a>
                     <a href="#contact" data-en="Contact" data-sw="Mawasiliano">Contact</a>
                 </div>
             </nav>
@@ -1146,11 +1146,10 @@
                     <label for="service" data-en="Service Interested In" data-sw="Huduma Unayopenda">Service Interested In</label>
                     <select id="service" required>
                         <option value="" data-en="Select Service" data-sw="Chagua Huduma">Select Service</option>
-                        <option value="Bubble Maker" data-en="Bubble Maker (8-10 yrs)" data-sw="Bubble Maker (8-10 yrs)">Bubble Maker (8-10 yrs)</option>
-                        <option value="Open Water" data-en="Open Water Diver" data-sw="Open Water Diver">Open Water Diver</option>
-                        <option value="Advanced" data-en="Advanced Diver" data-sw="Advanced Diver">Advanced Diver</option>
-                        <option value="Fun Dive" data-en="Fun Dive" data-sw="Piga Mbizi kwa Furaha">Fun Dive</option>
-                        <option value="Equipment" data-en="Equipment Rental" data-sw="Kukodisha Vifaa">Equipment Rental</option>
+                        <option value="Scuba diving courses" data-en="Scuba diving courses" data-sw="Kozi za kupiga mbizi">Scuba diving courses</option>
+                        <option value="Fun dive" data-en="Fun dive" data-sw="Kupiga mbizi kwa furaha">Fun dive</option>
+                        <option value="Snorkeling trip" data-en="Snorkeling trip" data-sw="Safari ya snorkeling">Snorkeling trip</option>
+                        <option value="Boat cruise" data-en="Boat cruise" data-sw="Safari ya boti">Boat cruise</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -1166,7 +1165,7 @@
     <section class="services" id="services">
         <div class="container">
             <div class="section-title animate-on-scroll">
-                <h2 data-en="Our Diving Services" data-sw="Huduma Zetu za Kupiga Mbizi">Our Diving Services</h2>
+                <h2 data-en="Our Activities" data-sw="Shughuli Zetu">Our Activities</h2>
                 <p data-en="Professional training and unforgettable underwater adventures" data-sw="Mafunzo ya kitaalam na safari za kusisimua chini ya bahari">Professional training and unforgettable underwater adventures</p>
             </div>
             <div class="services-grid">
@@ -1174,25 +1173,25 @@
                     <div class="service-icon">
                         <i class="fas fa-certificate pulse"></i>
                     </div>
-                    <h3 data-en="PADI Certification" data-sw="Vyeti vya PADI">PADI Certification</h3>
-                    <p data-en="From beginner Bubble Maker courses to professional Divemaster training with international certification." data-sw="Kuanzia kozi za Bubble Maker hadi mafunzo ya Divemaster yenye vyeti vya kimataifa.">From beginner Bubble Maker courses to professional Divemaster training with international certification.</p>
+                    <h3 data-en="Scuba diving courses" data-sw="Kozi za kupiga mbizi">Scuba diving courses</h3>
+                    <p data-en="From beginner courses to professional Divemaster training with international certification." data-sw="Kuanzia kozi za mwanzo hadi mafunzo ya Divemaster yenye vyeti vya kimataifa.">From beginner courses to professional Divemaster training with international certification.</p>
                     <a href="#" class="btn btn-primary" data-en="Learn More" data-sw="Jifunze Zaidi">Learn More</a>
                 </div>
                 <div class="service-card animate-on-scroll" style="transition-delay: 0.2s;">
                     <div class="service-icon">
                         <i class="fas fa-ship pulse"></i>
                     </div>
-                    <h3 data-en="Dive Trips" data-sw="Safari za Kupiga Mbizi">Dive Trips</h3>
+                    <h3 data-en="Fun dive" data-sw="Kupiga mbizi kwa furaha">Fun dive</h3>
                     <p data-en="Explore Tanzania's best dive sites including Mafia Island, Zanzibar, and Pemba with our expert guides." data-sw="Gundua maeneo bora ya kupiga mbizi Tanzania ikiwa ni pamoja na Mafia, Zanzibar na Pemba kwa uongozi wa wataalamu wetu.">Explore Tanzania's best dive sites including Mafia Island, Zanzibar, and Pemba with our expert guides.</p>
                     <a href="#" class="btn btn-primary" data-en="View Packages" data-sw="Angalia Mifuko">View Packages</a>
                 </div>
                 <div class="service-card animate-on-scroll" style="transition-delay: 0.4s;">
                     <div class="service-icon">
-                        <i class="fas fa-tools pulse"></i>
+                        <i class="fas fa-swimmer pulse"></i>
                     </div>
-                    <h3 data-en="Equipment Rental" data-sw="Kukodisha Vifaa">Equipment Rental</h3>
-                    <p data-en="High-quality scuba gear from leading brands available for rent at competitive prices." data-sw="Vifaa vya hali ya juu vya scuba kutoka kwa wabunifu wakuu vinapatikana kwa kodi kwa bei nafuu.">High-quality scuba gear from leading brands available for rent at competitive prices.</p>
-                    <a href="#" class="btn btn-primary" data-en="Rent Now" data-sw="Kodi Sasa">Rent Now</a>
+                    <h3 data-en="Snorkeling trip" data-sw="Safari ya snorkeling">Snorkeling trip</h3>
+                    <p data-en="Enjoy the underwater world without heavy equipment. Perfect for families and non-divers." data-sw="Furahia ulimwengu wa chini ya maji bila vifaa vizito. Inafaa kwa familia na wasiojua kupiga mbizi.">Enjoy the underwater world without heavy equipment. Perfect for families and non-divers.</p>
+                    <a href="#" class="btn btn-primary" data-en="Book Now" data-sw="Hifadhi Sasa">Book Now</a>
                 </div>
             </div>
         </div>
@@ -1209,7 +1208,9 @@
             <div class="team-video-container animate-on-scroll">
                 <div class="video-wrapper">
                     <video autoplay loop muted playsinline>
-                        <source src="video.mp4" type="video/mp4">
+                        <source src="1.mp4" type="video/mp4">
+                        <source src="2.mp4" type="video/mp4">
+                        <source src="3.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <div class="video-overlay">
@@ -1233,20 +1234,24 @@
             
             <div class="gallery-grid">
                 <div class="gallery-item animate-on-scroll">
-                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><rect width='300' height='300' fill='%2300c8ff'/><text x='150' y='150' font-family='Montserrat' font-size='20' fill='white' text-anchor='middle'>Coral Reef Image</text></svg>" alt="Diving in Tanzania">
+                    <img src="1.jpg" alt="Diving in Tanzania">
                     <div class="gallery-caption" data-en="Coral Reef Exploration" data-sw="Uchunguzi wa Matumbawe">Coral Reef Exploration</div>
                 </div>
                 <div class="gallery-item animate-on-scroll" style="transition-delay: 0.1s;">
-                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><rect width='300' height='300' fill='%23003366'/><text x='150' y='150' font-family='Montserrat' font-size='20' fill='white' text-anchor='middle'>Marine Life Image</text></svg>" alt="Marine Life">
+                    <img src="2.jpg" alt="Marine Life">
                     <div class="gallery-caption" data-en="Colorful Marine Life" data-sw="Maisha ya Baharini Yenye Rangi">Colorful Marine Life</div>
                 </div>
                 <div class="gallery-item animate-on-scroll" style="transition-delay: 0.2s;">
-                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><rect width='300' height='300' fill='%2300c8ff'/><text x='150' y='150' font-family='Montserrat' font-size='20' fill='white' text-anchor='middle'>Training Image</text></svg>" alt="Diving Training">
+                    <img src="3.jpg" alt="Diving Training">
                     <div class="gallery-caption" data-en="Diving Training Session" data-sw="Mafunzo ya Kupiga Mbizi">Diving Training Session</div>
                 </div>
                 <div class="gallery-item animate-on-scroll" style="transition-delay: 0.3s;">
-                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><rect width='300' height='300' fill='%23003366'/><text x='150' y='150' font-family='Montserrat' font-size='20' fill='white' text-anchor='middle'>Underwater Photo</text></svg>" alt="Underwater Photography">
+                    <img src="4.jpg" alt="Underwater Photography">
                     <div class="gallery-caption" data-en="Underwater Photography" data-sw="Upigaji Picha Chini ya Maji">Underwater Photography</div>
+                </div>
+                <div class="gallery-item animate-on-scroll" style="transition-delay: 0.4s;">
+                    <img src="5.jpg" alt="Diving Equipment">
+                    <div class="gallery-caption" data-en="Diving Equipment" data-sw="Vifaa vya Kupiga Mbizi">Diving Equipment</div>
                 </div>
             </div>
         </div>
@@ -1369,7 +1374,8 @@
                     </div>
                     <h3 data-en="Follow Us" data-sw="Tufuate">Follow Us</h3>
                     <div class="social-links">
-                        <a href="https://instagram.com/instructor_eugen" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@deep.marine.divin?_t=ZM-8yDYt5EaVvE&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.instagram.com/invites/contact/?utm_source=ig_contact_invite&utm_medium=copy_link&utm_content=x4wbpdy" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="https://facebook.com/deepmarinediving" target="_blank"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://wa.me/255761060911" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
@@ -1403,29 +1409,28 @@
                     <h3 data-en="Deep Marine Diving" data-sw="Deep Marine Diving">Deep Marine Diving</h3>
                     <p data-en="PADI 5 Star Dive Center in Dar es Salaam, Tanzania offering professional scuba training and unforgettable diving experiences." data-sw="Kituo cha PADI 5 Star cha kupiga mbizi huko Dar es Salaam, Tanzania kinachotoa mafunzo ya kitaalam ya scuba na uzoefu wa kupiga mbizi usahaulikayo.">PADI 5 Star Dive Center in Dar es Salaam, Tanzania offering professional scuba training and unforgettable diving experiences.</p>
                     <div class="footer-social">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.tiktok.com/@deep.marine.divin?_t=ZM-8yDYt5EaVvE&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.instagram.com/invites/contact/?utm_source=ig_contact_invite&utm_medium=copy_link&utm_content=x4wbpdy" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com/deepmarinediving" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/255761060911" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 <div class="footer-col animate-on-scroll" style="transition-delay: 0.1s;">
                     <h3 data-en="Quick Links" data-sw="Viungo vya Haraka">Quick Links</h3>
                     <div class="footer-links">
                         <a href="#home" data-en="Home" data-sw="Nyumbani">Home</a>
-                        <a href="#services" data-en="Services" data-sw="Huduma">Services</a>
                         <a href="#about" data-en="About" data-sw="Kuhusu">About</a>
-                        <a href="#gallery" data-en="Gallery" data-sw="Picha">Gallery</a>
-                        <a href="#testimonials" data-en="Testimonials" data-sw="Ukaguzi">Testimonials</a>
+                        <a href="#services" data-en="Activities" data-sw="Shughuli">Activities</a>
                         <a href="#contact" data-en="Contact" data-sw="Mawasiliano">Contact</a>
                     </div>
                 </div>
                 <div class="footer-col animate-on-scroll" style="transition-delay: 0.2s;">
-                    <h3 data-en="Services" data-sw="Huduma">Services</h3>
+                    <h3 data-en="Activities" data-sw="Shughuli">Activities</h3>
                     <div class="footer-links">
-                        <a href="#" data-en="PADI Courses" data-sw="Kozi za PADI">PADI Courses</a>
-                        <a href="#" data-en="Dive Trips" data-sw="Safari za Kupiga Mbizi">Dive Trips</a>
-                        <a href="#" data-en="Equipment Rental" data-sw="Kukodisha Vifaa">Equipment Rental</a>
-                        <a href="#" data-en="Dive Safaris" data-sw="Safari za Kupiga Mbizi">Dive Safaris</a>
+                        <a href="#" data-en="Scuba diving courses" data-sw="Kozi za kupiga mbizi">Scuba diving courses</a>
+                        <a href="#" data-en="Fun dive" data-sw="Kupiga mbizi kwa furaha">Fun dive</a>
+                        <a href="#" data-en="Snorkeling trip" data-sw="Safari ya snorkeling">Snorkeling trip</a>
+                        <a href="#" data-en="Boat cruise" data-sw="Safari ya boti">Boat cruise</a>
                     </div>
                 </div>
                 <div class="footer-col animate-on-scroll" style="transition-delay: 0.3s;">
@@ -1446,7 +1451,7 @@
     <!-- ====== DEVELOPER CREDIT ====== -->
     <div class="developer-credit">
         <div class="container">
-            <p class="developer-text" data-en="Website developed by" data-sw="Tovuti imetengenezwa na">Website developed by <span class="mato-media">MATO MEDIA TZ</span></p>
+            <p class="developer-text" data-en="Website developed by" data-sw="Tovuti imetengenezwa na">Website developed by <a href="https://www.instagram.com/matomediatz?igsh=dHZtNW9qZm5tZmZ5" target="_blank" class="mato-media">MATO MEDIA TZ</a></p>
         </div>
     </div>
 
