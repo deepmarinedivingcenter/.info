@@ -10,8 +10,7 @@ Na huduma nyingine zinazohusiana na mazingira ya baharini
 HTML5  
 CSS3  
 JavaScript kama itahitajika  
-Hosting kupitia Netlify  
-Chanzo cha tovuti kipo kwenye GitHub
+
 
 ## 🌐 Tovuti Hai
 Tembelea Website  
