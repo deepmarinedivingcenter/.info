@@ -1260,15 +1260,16 @@
             font-size: 1rem;
         }
 
-        /* ====== DEVELOPER CREDIT ====== */
+        /* ... CSS yako yote hapo juu ... */
+
+/* ====== DEVELOPER CREDIT ====== */
 .developer-credit {
     background: var(--dark-abyss);
-    color: white;
+    color: white; 
     text-align: center;
     padding: 20px 0;
     font-size: 1rem;
-    /* Hii imerekebishwa kuwa 99999 ili kutoa uhakika zaidi kuwa iko juu ya kila kitu */
-    z-index: 99999; /* KEY CHANGE HERE: Increased z-index */
+    z-index: 99999; 
     position: relative;  
     overflow: visible;  
 }
@@ -1277,36 +1278,40 @@
     position: relative;
     display: inline-block;
     z-index: 1;  
-    color: rgba(255, 255, 255, 0.7); /* Ensure the static text is visible */
+    color: rgba(255, 255, 255, 0.7); 
 }
 
+/* --- STYLES FOR .mato-media ARE NOW REINTRODUCED WITH LINK AND EFFECTS --- */
 .mato-media {
     font-weight: bold;
     font-size: 1.1rem;  
-    /* HIZI NDIZO SAFA MPYA MUHIMU ZA KUTEST KWANZA: */
-    color: #ff0000 !important; /* Rangi nyekundu safi ili iwe rahisi kuonekana */
-    background-color: yellow; /* Background ya manjano ili kuona eneo lake */
-    
-    /* Ondoa au fanya commented out hizi hapa chini, kwa sababu zinaweza kuwa zinazuia uonekano */
-    /* display: inline-block; */ /* Ipo inline kwa default au inachukua display ya parent */
-    /* transition: all 0.3s ease-in-out; */
-    /* cursor: pointer; */
-    /* text-decoration: none; */
-    /* animation: colorChange 4s infinite alternate ease-in-out; */ 
-    /* text-shadow: 0 0 8px rgba(0, 255, 255, 0.7), 0 0 15px rgba(0, 255, 255, 0.5); */ 
-    /* padding: 2px 5px; */ 
+    color: #00ffff !important; /* Cyan color */
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    text-decoration: none;
+    animation: colorChange 4s infinite alternate ease-in-out; /* Reintroducing animation */
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.7), 0 0 15px rgba(0, 255, 255, 0.5); /* Reintroducing glow effect */
+    padding: 2px 5px; 
 }
 
-/* @keyframes colorChange - If you have this block, comment it out or remove it for this test */
-/* @keyframes colorChange {
+@keyframes colorChange {
     0% { color: #00ffff; } 
-    16% { color: #ffff00; }
-    33% { color: #ff00ff; }
-    50% { color: #00ff00; }
-    66% { color: #ff6600; }
-    83% { color: #9932CC; }
-    100% { color: #00ffff; }
-} */
+    16% { color: #ffff00; } 
+    33% { color: #ff00ff; } 
+    50% { color: #00ff00; } 
+    66% { color: #ff6600; } 
+    83% { color: #9932CC; } 
+    100% { color: #00ffff; } 
+}
+
+.mato-media:hover {
+    text-decoration: underline; 
+    transform: translateY(-2px) scale(1.05); 
+}
+
+/* ... CSS yako yote hapo chini ... */
+
 
 /* .mato-media:hover {
     text-decoration: underline; 
