@@ -14,30 +14,33 @@
     <meta property="og:url" content="https://deepmarinediving.com/" />
     <meta property="og:title" content="Deep Marine Diving | PADI 5★ Center | Tanzania Scuba Diving" />
     <meta property="og:description" content="PADI 5★ Dive Center in Dar es Salaam, Tanzania offering world-class scuba training, fun dives, snorkeling trips, and boat cruises. Discover Tanzania's breathtaking underwater wonders with certified instructors.">
-    <meta property="og:image" content="https://deepmarinediving.com/og-image.jpg" /> <meta property="og:site_name" content="Deep Marine Diving" />
+    <meta property="og:image" content="https://deepmarinediving.com/og-image.jpg" />
+    <meta property="og:site_name" content="Deep Marine Diving" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://deepmarinediving.com/" />
     <meta name="twitter:title" content="Deep Marine Diving | PADI 5★ Center | Tanzania Scuba Diving" />
     <meta name="twitter:description" content="PADI 5★ Dive Center in Dar es Salaam, Tanzania offering world-class scuba training, fun dives, snorkeling trips, and boat cruises. Discover Tanzania's breathtaking underwater wonders with certified instructors." />
-    <meta name="twitter:image" content="https://deepmarinediving.com/twitter-image.jpg" /> <meta name="twitter:creator" content="@MATOMEDIATZ" /> <meta name="twitter:site" content="@DeepMarineDiving" /> <link rel="icon" href="con.png" type="image/png">
+    <meta name="twitter:image" content="https://deepmarinediving.com/twitter-image.jpg" />
+    <meta name="twitter:creator" content="@MATOMEDIATZ" />
+    <meta name="twitter:site" content="@DeepMarineDiving" />
+
+    <link rel="icon" href="con.png" type="image/png">
     <title>Deep Marine Diving | PADI 5★ Center | Tanzania</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <style>
-        /* ====== CUSTOM VARIABLES ====== */
         :root {
             --deep-blue: #0a2463;
             --ocean-teal: #3e92cc;
             --coral: #ff6b6b;
             --light-wave: #f8f9fa;
-            --dark-abyss: #051923; /* Very dark blue/almost black */
+            --dark-abyss: #051923;
             --gold-accent: #ffd700;
             --neon-glow: 0 0 15px rgba(62, 146, 204, 0.7);
             --premium-gradient: linear-gradient(135deg, #0a2463 0%, #3e92cc 100%);
         }
 
-        /* ====== BASE STYLES ====== */
         * {
             margin: 0;
             padding: 0;
@@ -70,7 +73,6 @@
             position: relative;
         }
 
-        /* ====== PREMIUM LOADING ANIMATION (MODIFIED) ====== */
         .loading-screen {
             position: fixed;
             top: 0;
@@ -169,7 +171,6 @@
             100% { width: 0; left: calc(50% + 50px); }
         }
 
-        /* ====== ANIMATIONS ====== */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -207,7 +208,6 @@
             animation: pulse 2s infinite;
         }
 
-        /* ====== LANGUAGE SWITCHER (Now within HEADER nav) ====== */
         .language-switcher {
             display: flex;
             gap: 5px;
@@ -217,9 +217,9 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            z-index: 1001; /* Keep it above most content in header */
+            z-index: 1001;
             transition: all 0.3s ease-in-out;
-            margin-left: auto; /* Push to the right, next to BOOK NOW */
+            margin-left: auto;
         }
 
         .language-btn {
@@ -242,7 +242,6 @@
             color: white;
         }
 
-        /* ====== HEADER (Uniform for all views) ====== */
         header {
             position: fixed;
             width: 100%;
@@ -262,17 +261,17 @@
 
         nav {
             display: flex;
-            justify-content: space-between; /* Space out items */
+            justify-content: space-between;
             align-items: center;
             width: 100%;
             position: relative;
-            padding: 0 15px; /* Consistent padding */
+            padding: 0 15px;
         }
 
         .logo-container {
-            order: 0; /* Ensures it's always after menu button */
-            margin: 0 auto; /* Centers the logo in the remaining space */
-            flex-shrink: 0; /* Prevent logo from shrinking */
+            order: 0;
+            margin: 0 auto;
+            flex-shrink: 0;
         }
 
         .logo-circle {
@@ -299,7 +298,6 @@
             transition: all 0.3s;
         }
 
-        /* Nav links are always hidden in the header, shown via mobile menu */
         .nav-links {
             display: none; 
         }
@@ -315,8 +313,8 @@
             border: 2px solid var(--ocean-teal);
             box-shadow: 0 5px 15px rgba(62, 146, 204, 0.3);
             flex-shrink: 0;
-            margin-left: 20px; /* Space from language switcher or logo */
-            order: 2; /* Ensure it's on the right, after language switcher */
+            margin-left: 20px;
+            order: 2;
         }
 
         .book-now-btn:hover {
@@ -326,9 +324,8 @@
             box-shadow: 0 8px 25px rgba(62, 146, 204, 0.4);
         }
 
-        /* Mobile menu button (now functions as the main menu toggle for all views) */
         .mobile-menu-btn {
-            display: flex; /* Always visible */
+            display: flex;
             background: none;
             border: none;
             font-size: 1.5rem;
@@ -340,20 +337,19 @@
             height: 40px;
             align-items: center;
             justify-content: center;
-            margin-right: 15px; /* Space between button and logo */
-            order: -1; /* Place it first in the flex order */
+            margin-right: 15px;
+            order: -1;
         }
-        /* Only one icon now, it transforms */
+        
         .mobile-menu-btn .fas {
             transition: transform 0.3s ease-in-out;
         }
 
         .mobile-menu-btn.active .fas {
-            transform: rotate(90deg); /* Rotate for X appearance */
+            transform: rotate(90deg);
             color: var(--coral); 
         }
 
-        /* ====== PREMIUM HERO SECTION ====== */
         .hero {
             height: 100vh;
             display: flex;
@@ -405,7 +401,6 @@
             max-width: 600px;
         }
 
-        /* ====== PREMIUM BUTTON STYLES ====== */
         .btn {
             display: inline-block;
             padding: 16px 35px;
@@ -463,7 +458,6 @@
             box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
         }
 
-        /* ====== BOOK A DIVE BUTTON ANIMATION ====== */
         .book-dive-btn {
             position: relative;
             overflow: hidden;
@@ -491,7 +485,6 @@
             left: 100%;
         }
 
-        /* ====== PREMIUM BOOKING MODAL ====== */
         .modal {
             display: none;
             position: fixed;
@@ -520,8 +513,8 @@
             background: linear-gradient(135deg, #f8f9fa 0%, #e6f7ff 100%);
             border: 1px solid rgba(62, 146, 204, 0.3);
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-            overflow-y: auto; /* Allow scrolling for content overflow */
-            max-height: 90vh; /* Limit height on smaller screens */
+            overflow-y: auto;
+            max-height: 90vh;
         }
 
         .modal-content::before {
@@ -664,10 +657,9 @@
             opacity: 0.9;
         }
 
-        /* ====== TEAM VIDEO ====== */
         .team-video-container {
             width: 100%;
-            max-width: 1000px; /* Made slightly larger */
+            max-width: 1000px;
             margin: 60px auto;
             border-radius: 20px;
             overflow: hidden;
@@ -679,7 +671,7 @@
 
         .video-wrapper {
             position: relative;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            padding-top: 56.25%;
             transform: translateZ(20px);
         }
 
@@ -742,7 +734,6 @@
             pointer-events: none;
         }
 
-        /* ====== SERVICES SECTION ====== */
         .services {
             background: white;
             position: relative;
@@ -871,8 +862,87 @@
             margin-bottom: 30px;
             font-size: 1.1rem;
         }
+
+        .price-note {
+            font-style: italic;
+            font-size: 0.95rem;
+            color: #666;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
         
-        /* ====== COURSES SECTION (NEW) ====== */
+        .accordion-container {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .accordion-item {
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+        .accordion-header {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 15px 5px;
+            cursor: pointer;
+            text-align: left;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--deep-blue);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        .accordion-header:hover {
+            background-color: rgba(62, 146, 204, 0.05);
+        }
+        .accordion-header .icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease-in-out;
+            color: var(--ocean-teal);
+        }
+        .accordion-item.active .accordion-header .icon {
+            transform: rotate(45deg);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+            font-size: 0.95rem;
+            color: #555;
+            background-color: #fdfdfd;
+        }
+        .accordion-content p {
+            margin: 0;
+            padding: 0;
+            font-size: 0.95rem;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 500px; /* Adjust if content is taller */
+            padding: 20px;
+        }
+        .accordion-content ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .accordion-content li {
+            margin-bottom: 8px;
+        }
+        .accordion-content strong {
+            color: var(--dark-abyss);
+        }
+        .accordion-content .total-price {
+            font-weight: 700;
+            color: var(--ocean-teal);
+            border-top: 1px dashed #ccc;
+            margin-top: 10px;
+            padding-top: 10px;
+        }
+        
         .courses {
             background: var(--light-wave);
         }
@@ -926,7 +996,6 @@
             line-height: 1.6;
         }
 
-        /* ====== TESTIMONIALS SECTION ====== */
         .testimonials {
             background: #fff;
             position: relative;
@@ -1030,7 +1099,6 @@
             font-size: 1rem;
         }
 
-        /* ====== GALLERY SECTION ====== */
         .gallery {
             background: white;
             position: relative;
@@ -1109,8 +1177,6 @@
             display: none;
         }
 
-
-        /* ====== CONTACT SECTION ====== */
         .contact {
             background: var(--light-wave);
             position: relative;
@@ -1223,7 +1289,6 @@
             box-shadow: 0 5px 15px rgba(10, 36, 99, 0.3);
         }
 
-        /* ====== FOOTER ====== */
         footer {
             background: var(--premium-gradient);
             color: white;
@@ -1305,12 +1370,11 @@
             font-size: 1rem;
         }
         
-        /* ====== DEVELOPER CREDIT (REVISED) ====== */
         .developer-credit {
             background: var(--dark-abyss);
             color: white; 
             text-align: center;
-            padding: 25px 0; /* Increased padding */
+            padding: 25px 0;
             font-size: 1rem;
             position: relative;  
         }
@@ -1321,17 +1385,17 @@
         }
         
         .developer-credit .mato-media {
-            font-family: 'Orbitron', sans-serif; /* Tech font */
+            font-family: 'Orbitron', sans-serif;
             font-weight: 700;
             font-size: 1.2rem;  
-            color: #00ffff; /* Starting color */
+            color: #00ffff;
             display: inline-block;
             transition: all 0.3s ease-in-out;
             cursor: pointer;
             text-decoration: none;
             animation: 
                 colorChange 4s infinite alternate ease-in-out,
-                slowDance 5s infinite ease-in-out; /* Combined animations */
+                slowDance 5s infinite ease-in-out;
             text-shadow: 0 0 8px rgba(0, 255, 255, 0.7), 0 0 15px rgba(0, 255, 255, 0.5);
             padding: 2px 5px; 
         }
@@ -1357,11 +1421,10 @@
 
         .developer-credit .mato-media:hover {
             text-decoration: none;
-            animation-play-state: paused; /* Pause animation on hover for better clickability */
+            animation-play-state: paused;
             transform: translateY(-2px) scale(1.05); 
         }
 
-        /* ====== MOBILE MENU (Now acts as the main menu for all views) ====== */
         .mobile-menu {
             position: fixed;
             top: 0;
@@ -1426,9 +1489,6 @@
             z-index: auto;
         }
 
-
-        /* ====== RESPONSIVE DESIGN ====== */
-
         @media (min-width: 992px) {
             .hero h1 { font-size: 4.5rem; }
             .section-title h2 { font-size: 3rem; }
@@ -1480,10 +1540,9 @@
             .loading-text { font-size: 1.5rem; }
         }
 
-        /* ====== Floating WhatsApp Button ====== */
         .whatsapp-float {
             position: fixed;
-            bottom: 90px; /* MOVED UP */
+            bottom: 90px;
             right: 30px;
             background-color: #25d366;
             color: white;
@@ -1511,7 +1570,7 @@
                 width: 50px;
                 height: 50px;
                 font-size: 24px;
-                bottom: 80px; /* MOVED UP */
+                bottom: 80px;
                 right: 20px;
             }
         }
@@ -1521,7 +1580,8 @@
     <div class="loading-screen" id="loadingScreen">
         <div class="water-bubbles" id="waterBubbles"></div>
         <div class="loading-logo">
-            <img src="logo.png" alt="Deep Marine Diving"> </div>
+            <img src="logo.png" alt="Deep Marine Diving">
+        </div>
         <div class="loading-text" data-en="Welcome to Deep Marine Diving" data-sw="Karibu kwenye Deep Marine Diving">Welcome to Deep Marine Diving</div>
     </div>
 
@@ -1621,24 +1681,154 @@
                         <i class="fas fa-certificate pulse"></i>
                     </div>
                     <h3 data-en="Scuba diving courses" data-sw="Kozi za kupiga mbizi">Scuba diving courses</h3>
-                    <p data-en="From beginner Open Water to advanced Divemaster, our PADI certified courses cater to all skill levels. Learn safety, techniques, and theory from experienced instructors." data-sw="Kuanzia kozi za mwanzo (Open Water) hadi Divemaster ya juu, kozi zetu zilizothibitishwa na PADI zinafaa viwango vyote vya ujuzi. Jifunze usalama, mbinu, na nadharia kutoka kwa walimu wenye uzoefu.">From beginner Open Water to advanced Divemaster, our PADI certified courses cater to all skill levels. Learn safety, techniques, and theory from experienced instructors.</p>
-                    <a href="#courses-section" class="btn btn-primary" data-en="Learn More" data-sw="Jifunze Zaidi">Learn More</a>
+                    <p data-en="From beginner Open Water to advanced Divemaster, our PADI certified courses cater to all skill levels." data-sw="Kuanzia kozi za mwanzo (Open Water) hadi Divemaster ya juu, kozi zetu zilizothibitishwa na PADI zinafaa viwango vyote vya ujuzi.">From beginner Open Water to advanced Divemaster, our PADI certified courses cater to all skill levels.</p>
+                    <p class="price-note">All prices are exclusive of PADI theory materials.</p>
+                    <div class="accordion-container">
+                        <div class="accordion-item">
+                            <button class="accordion-header"><span>🔹 PADI Scuba Diver Course</span><span class="icon">+</span></button>
+                            <div class="accordion-content">
+                                <ul>
+                                    <li><strong>Duration:</strong> 2 Days</li>
+                                    <li><strong>Course Price:</strong> $250</li>
+                                    <li><strong>PADI eLearning (theory):</strong> $150</li>
+                                    <li class="total-price"><strong>Total with theory:</strong> $400</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header"><span>🔹 PADI Open Water Diver Course</span><span class="icon">+</span></button>
+                            <div class="accordion-content">
+                                <ul>
+                                    <li><strong>Duration:</strong> 3 Days</li>
+                                    <li><strong>Course Price:</strong> $350</li>
+                                    <li><strong>PADI eLearning (theory):</strong> $150</li>
+                                    <li class="total-price"><strong>Total with theory:</strong> $500</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header"><span>🔹 PADI Advanced Open Water Course</span><span class="icon">+</span></button>
+                            <div class="accordion-content">
+                                <ul>
+                                    <li><strong>Duration:</strong> 2 Days</li>
+                                    <li><strong>Course Price:</strong> $320</li>
+                                    <li><strong>PADI eLearning (theory):</strong> $150</li>
+                                    <li class="total-price"><strong>Total with theory:</strong> $470</li>
+                                </ul>
+                            </div>
+                        </div>
+                         <div class="accordion-item">
+                            <button class="accordion-header"><span>🔹 PADI Rescue Diver Course</span><span class="icon">+</span></button>
+                            <div class="accordion-content">
+                                <ul>
+                                    <li><strong>Duration:</strong> 2 Days</li>
+                                    <li><strong>Course Price:</strong> $350</li>
+                                    <li><strong>PADI eLearning (theory):</strong> $150</li>
+                                    <li class="total-price"><strong>Total with theory:</strong> $500</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header"><span>🔹 Emergency First Response (EFR)</span><span class="icon">+</span></button>
+                            <div class="accordion-content">
+                                <ul>
+                                    <li><strong>Duration:</strong> 1 Day</li>
+                                    <li><strong>Course Price:</strong> $160</li>
+                                    <li><strong>PADI Manual (theory):</strong> $40</li>
+                                    <li class="total-price"><strong>Total with theory:</strong> $200</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header"><span>🔹 PADI Divemaster Course</span><span class="icon">+</span></button>
+                            <div class="accordion-content">
+                                <ul>
+                                    <li><strong>Duration:</strong> 1 Month</li>
+                                    <li><strong>Course Price:</strong> $1,350</li>
+                                    <li><strong>Divemaster Crew Pack (materials):</strong> $450</li>
+                                    <li class="total-price"><strong>Total with materials:</strong> $1,800</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="service-card animate-on-scroll" style="transition-delay: 0.2s;">
                     <div class="service-icon">
                         <i class="fas fa-ship pulse"></i>
                     </div>
                     <h3 data-en="Fun dive" data-sw="Kupiga mbizi kwa furaha">Fun dive</h3>
-                    <p data-en="Experience breathtaking underwater landscapes! We arrange daily fun dives to the best sites in Dar es Salaam, Zanzibar, Mafia Island, and Pemba, complete with gear and guidance." data-sw="Furahia mandhari ya ajabu chini ya maji! Tunapanga safari za kila siku za kupiga mbizi za kufurahisha kwenye maeneo bora ya Dar es Salaam, Zanzibar, Mafia Island, na Pemba, ikiwa ni pamoja na vifaa na mwongozo.">Experience breathtaking underwater landscapes! We arrange daily fun dives to the best sites in Dar es Salaam, Zanzibar, Mafia Island, and Pemba, complete with gear and guidance.</p>
-                    <a href="#contact" class="btn btn-primary" data-en="View Packages" data-sw="Angalia Mifuko">View Packages</a>
+                    <p data-en="Experience breathtaking underwater landscapes! We arrange daily fun dives to the best sites around." data-sw="Furahia mandhari ya ajabu chini ya maji! Tunapanga safari za kila siku za kupiga mbizi za kufurahisha kwenye maeneo bora.">Experience breathtaking underwater landscapes! We arrange daily fun dives to the best sites around.</p>
+                    <p class="price-note">All packages include equipment, boat trip, drinking water, and snacks.</p>
+                     <div class="accordion-container">
+                        <div class="accordion-item">
+                            <button class="accordion-header"><span>Discover Scuba Diving – $150</span><span class="icon">+</span></button>
+                            <div class="accordion-content">
+                               <p>Two dives · One day · For non-divers</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header"><span>Double Dive – $120</span><span class="icon">+</span></button>
+                            <div class="accordion-content">
+                                <p>Two dives · One day</p>
+                            </div>
+                        </div>
+                         <div class="accordion-item">
+                            <button class="accordion-header"><span>Four Dives – $220</span><span class="icon">+</span></button>
+                            <div class="accordion-content">
+                                <p>Four dives · Two days</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header"><span>Six Dives – $320</span><span class="icon">+</span></button>
+                            <div class="accordion-content">
+                                <p>Six dives · Three days</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header"><span>Eight Dives – $410</span><span class="icon">+</span></button>
+                            <div class="accordion-content">
+                                <p>Eight dives · Four days</p>
+                            </div>
+                        </div>
+                         <div class="accordion-item">
+                            <button class="accordion-header"><span>Ten Dives – $490</span><span class="icon">+</span></button>
+                            <div class="accordion-content">
+                                <p>Ten dives · Five days</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="service-card animate-on-scroll" style="transition-delay: 0.4s;">
                     <div class="service-icon">
                         <i class="fas fa-swimmer pulse"></i>
                     </div>
                     <h3 data-en="Snorkeling trip" data-sw="Safari ya snorkeling">Snorkeling trip</h3>
-                    <p data-en="Discover colorful reefs and diverse marine life just beneath the surface. Perfect for families, children, and non-divers looking for a relaxing aquatic adventure." data-sw="Gundua miamba yenye rangi na viumbe hai mbalimbali vya baharini chini ya uso wa maji. Inafaa kwa familia, watoto, na wale wasiojua kupiga mbizi wanaotafuta burudani ya majini.">Discover colorful reefs and diverse marine life just beneath the surface. Perfect for families, children, and non-divers looking for a relaxing aquatic adventure.</p>
-                    <a href="#contact" class="btn btn-primary" data-en="Book Now" data-sw="Hifadhi Sasa">Book Now</a>
+                    <p data-en="Discover colorful reefs and diverse marine life just beneath the surface. Perfect for families and non-divers." data-sw="Gundua miamba yenye rangi na viumbe hai mbalimbali vya baharini chini ya uso wa maji. Inafaa kwa familia na wasio wapiga mbizi.">Discover colorful reefs and diverse marine life just beneath the surface. Perfect for families and non-divers.</p>
+                    <p class="price-note">Each trip lasts 4-5 hours and includes gear, water, snacks, and island time.</p>
+                    <div class="accordion-container">
+                        <div class="accordion-item">
+                            <button class="accordion-header"><span>Bongoyo Island – $50</span><span class="icon">+</span></button>
+                            <div class="accordion-content">
+                               <p>Snorkeling at coral reefs and a shallow shipwreck (4–8m depth).</p>
+                               <p><strong>Marine park fee not included:</strong></p>
+                               <ul>
+                                   <li>Residents: $11.80 (11,800 TSH)</li>
+                                   <li>Non-residents: $17.70</li>
+                               </ul>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header"><span>Mbudya Island – $70</span><span class="icon">+</span></button>
+                            <div class="accordion-content">
+                                <p>Snorkeling at clear reef sites with rich marine life.</p>
+                                <p><strong>Marine park fee not included:</strong></p>
+                               <ul>
+                                   <li>Residents: $11.80 (11,800 TSH)</li>
+                                   <li>Non-residents: $17.70</li>
+                               </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="service-card animate-on-scroll" style="transition-delay: 0.6s;">
                     <div class="service-icon">
@@ -1971,7 +2161,6 @@
     </a>
 
     <script>
-        // ====== LOADING ANIMATION ======
         window.addEventListener('load', function() {
             const waterBubbles = document.getElementById('waterBubbles');
             for (let i = 0; i < 20; i++) {
@@ -1990,7 +2179,6 @@
             }, 4000);
         });
 
-        // ====== LANGUAGE SWITCHER FUNCTIONALITY ======
         const enBtnHeader = document.getElementById('enBtn');
         const swBtnHeader = document.getElementById('swBtn');
         const enBtnMobile = document.getElementById('enBtnMobile');
@@ -2034,7 +2222,6 @@
                     if (placeholder) element.placeholder = placeholder;
                 } else {
                     if (text) {
-                        // Check if the element is the developer credit text span
                         if (element.parentElement.classList.contains('developer-text')) {
                             const parent = element.parentElement;
                             parent.innerHTML = `${text} <a href="https://www.instagram.com/matomediatz" target="_blank" class="mato-media">MATO MEDIA TZ</a>`;
@@ -2087,7 +2274,6 @@
             });
         });
 
-        // ====== BOOKING MODAL FUNCTIONALITY ======
         const bookingModal = document.getElementById('bookingModal');
         const bookNowBtn = document.getElementById('bookNowBtn');
         const bookDiveBtn = document.getElementById('bookDiveBtn');
@@ -2148,7 +2334,6 @@
                 : 'Asante! Ombi lako la kuhifadhi limepelekwa. Tutawasiliana nawe hivi karibuni.');
         });
 
-        // ====== CONTACT FORM SUBMISSION ======
         const contactForm = document.getElementById('contactForm');
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
@@ -2171,7 +2356,6 @@
             });
         }
 
-        // ====== SCROLL ANIMATIONS ======
         const animateOnScroll = () => {
             document.querySelectorAll('.animate-on-scroll').forEach(element => {
                 if (element.getBoundingClientRect().top < window.innerHeight - 100) {
@@ -2182,13 +2366,11 @@
         animateOnScroll();
         window.addEventListener('scroll', animateOnScroll);
 
-        // ====== HEADER SCROLL EFFECT ======
         window.addEventListener('scroll', () => {
             const header = document.getElementById('main-header');
             header.classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // ====== MOBILE MENU FUNCTIONALITY ======
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
         const closeMenuBtn = document.getElementById('closeMenuBtn');
@@ -2206,6 +2388,13 @@
                 if (mobileMenu.classList.contains('active')) {
                     toggleMenu();
                 }
+            });
+        });
+
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const accordionItem = header.parentElement;
+                accordionItem.classList.toggle('active');
             });
         });
     </script>
