@@ -356,7 +356,7 @@
             align-items: center;
             position: relative;
             overflow: hidden;
-            background: url('1.jpg') center/cover no-repeat;
+            background: var(--premium-gradient);
         }
 
         .hero::before {
@@ -2161,6 +2161,75 @@
     </a>
 
     <script>
+        // === DATA LOADING FROM ADMIN PANEL ===
+        function loadAdminData() {
+            try {
+                const adminData = localStorage.getItem('adminData');
+                if (adminData) {
+                    const data = JSON.parse(adminData);
+                    
+                    // Load hero image if updated in admin
+                    const currentHeroImage = document.querySelector('.hero');
+                    if (currentHeroImage && data.heroImage) {
+                        currentHeroImage.style.background = `url('${data.heroImage}') center/cover no-repeat`;
+                    }
+                    
+                    // Load contact information
+                    if (data.contactInfo) {
+                        const contactEmail = document.querySelector('.contact-text a[href^="mailto:"]');
+                        const contactPhone = document.querySelector('.contact-text a[href^="tel:"]');
+                        const contactAddress = document.querySelector('.contact-text');
+                        const contactHours = document.querySelectorAll('.contact-text')[3];
+                        
+                        if (contactEmail && data.contactInfo.email) {
+                            contactEmail.textContent = data.contactInfo.email;
+                            contactEmail.href = `mailto:${data.contactInfo.email}`;
+                        }
+                        
+                        if (contactPhone && data.contactInfo.phone) {
+                            contactPhone.textContent = data.contactInfo.phone;
+                            contactPhone.href = `tel:${data.contactInfo.phone}`;
+                        }
+                        
+                        if (contactAddress && data.contactInfo.address) {
+                            contactAddress.textContent = data.contactInfo.address;
+                            contactAddress.setAttribute('data-en', data.contactInfo.address);
+                            contactAddress.setAttribute('data-sw', data.contactInfo.address);
+                        }
+                        
+                        if (contactHours && data.contactInfo.hours) {
+                            contactHours.textContent = data.contactInfo.hours;
+                            contactHours.setAttribute('data-en', data.contactInfo.hours);
+                            contactHours.setAttribute('data-sw', data.contactInfo.hours);
+                        }
+                    }
+                    
+                    // Load news if available
+                    if (data.news && data.news.length > 0) {
+                        // You can implement news display here if needed
+                        console.log('Latest news loaded:', data.news[0]);
+                    }
+                    
+                    console.log('Admin data loaded successfully');
+                }
+            } catch (error) {
+                console.log('No admin data found or error loading data');
+            }
+        }
+
+        // Load admin data when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAdminData();
+            
+            // Also listen for storage changes (if admin updates data while index.html is open)
+            window.addEventListener('storage', function(e) {
+                if (e.key === 'adminData') {
+                    loadAdminData();
+                }
+            });
+        });
+
+        // Rest of your existing JavaScript code remains the same...
         window.addEventListener('load', function() {
             const waterBubbles = document.getElementById('waterBubbles');
             for (let i = 0; i < 20; i++) {
@@ -2400,4 +2469,3 @@
     </script>
 </body>
 </html>
-```
