@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Deep Marine Diving</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-blue: #0a2463;
+            --ocean-teal: #3e92cc;
+            --coral: #ff6b6b;
+            --light-wave: #f8f9fa;
+            --dark-abyss: #051923;
+            --gold-accent: #ffd700;
+            --premium-gradient: linear-gradient(135deg, #0a2463 0%, #3e92cc 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--premium-gradient);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .admin-login-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 450px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .admin-login-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: var(--premium-gradient);
+        }
+
+        .login-header {
+            background: var(--light-wave);
+            padding: 40px 30px 30px;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .logo-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 3px solid var(--ocean-teal);
+        }
+
+        .logo-img {
+            height: 80%;
+            width: auto;
+        }
+
+        .login-header h1 {
+            color: var(--deep-blue);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .login-header p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .login-form {
+            padding: 40px 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--deep-blue);
+            font-size: 0.95rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-family: inherit;
+            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+        }
+
+        .form-group input:focus {
+            border-color: var(--ocean-teal);
+            box-shadow: 0 0 0 3px rgba(62, 146, 204, 0.2);
+            outline: none;
+            background: white;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 42px;
+            background: none;
+            border: none;
+            color: #777;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .submit-btn {
+            background: var(--premium-gradient);
+            color: white;
+            border: none;
+            padding: 16px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(10, 36, 99, 0.3);
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(10, 36, 99, 0.4);
+        }
+
+        .submit-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--ocean-teal) 0%, var(--deep-blue) 100%);
+            z-index: -1;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover::after {
+            opacity: 0.9;
+        }
+
+        .login-footer {
+            text-align: center;
+            padding: 20px 30px;
+            background: var(--light-wave);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .login-footer a {
+            color: var(--ocean-teal);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .alert {
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .alert-error {
+            background: rgba(255, 107, 107, 0.1);
+            border: 1px solid var(--coral);
+            color: #d63031;
+        }
+
+        .water-bubbles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: bubbleRise 8s linear infinite;
+        }
+
+        @keyframes bubbleRise {
+            0% {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100px) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .admin-login-container {
+                max-width: 100%;
+            }
+            
+            .login-header {
+                padding: 30px 20px 20px;
+            }
+            
+            .login-form {
+                padding: 30px 20px;
+            }
+            
+            .logo-circle {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="water-bubbles" id="waterBubbles"></div>
+    
+    <div class="admin-login-container">
+        <div class="login-header">
+            <div class="logo-circle">
+                <img src="logo.png" alt="Deep Marine Diving" class="logo-img">
+            </div>
+            <h1>Admin Login</h1>
+            <p>Deep Marine Diving Management System</p>
+        </div>
+        
+        <div class="login-form">
+            <div class="alert alert-error" id="errorAlert">
+                <i class="fas fa-exclamation-circle"></i> Invalid username or password
+            </div>
+            
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Enter your username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                    <button type="button" class="password-toggle" id="passwordToggle">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-lock"></i> Login to Dashboard
+                </button>
+            </form>
+        </div>
+        
+        <div class="login-footer">
+            <p>For assistance, contact <a href="mailto:deepmarinediving@gmail.com">deepmarinediving@gmail.com</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Create water bubbles effect
+        const waterBubbles = document.getElementById('waterBubbles');
+        for (let i = 0; i < 15; i++) {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.style.left = Math.random() * 100 + 'vw';
+            bubble.style.width = (Math.random() * 15 + 5) + 'px';
+            bubble.style.height = bubble.style.width;
+            bubble.style.animationDelay = (Math.random() * 5) + 's';
+            bubble.style.animationDuration = (Math.random() * 10 + 8) + 's';
+            waterBubbles.appendChild(bubble);
+        }
+
+        // Password toggle visibility
+        const passwordToggle = document.getElementById('passwordToggle');
+        const passwordInput = document.getElementById('password');
+        
+        passwordToggle.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+        });
+
+        // Form submission
+        const adminLoginForm = document.getElementById('adminLoginForm');
+        const errorAlert = document.getElementById('errorAlert');
+        
+        // Default admin credentials (in a real application, these would be validated server-side)
+        const adminCredentials = {
+            username: 'admin',
+            password: 'deepmarine2025'
+        };
+
+        adminLoginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Simple client-side validation
+            if (username === adminCredentials.username && password === adminCredentials.password) {
+                // Successful login - redirect to admin dashboard
+                errorAlert.style.display = 'none';
+                
+                // Show loading state
+                const submitBtn = adminLoginForm.querySelector('.submit-btn');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
+                submitBtn.disabled = true;
+                
+                // Simulate API call/processing
+                setTimeout(() => {
+                    // In a real application, you would redirect to the actual admin dashboard
+                    alert('Login successful! Redirecting to admin dashboard...');
+                    // window.location.href = '/admin/dashboard.html';
+                    
+                    // For demo purposes, we'll just reset the form
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    adminLoginForm.reset();
+                }, 1500);
+            } else {
+                // Failed login
+                errorAlert.style.display = 'block';
+                
+                // Shake animation for error
+                adminLoginForm.style.animation = 'shake 0.5s';
+                setTimeout(() => {
+                    adminLoginForm.style.animation = '';
+                }, 500);
+            }
+        });
+
+        // Add shake animation for errors
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-5px); }
+                75% { transform: translateX(5px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
